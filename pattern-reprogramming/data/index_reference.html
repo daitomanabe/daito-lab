@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pa++ern (2009) — esoteric language for embroidery (Revival). Type code. Get a pattern." />
+  <title>Pa++ern (2009) — Revival</title>
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#111;
+      --text:#eaeaea;
+      --muted:#a8a8a8;
+      --line:#2a2a2a;
+      --danger:#ff6b6b;
+      --white:#ffffff;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 72px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .title{
+      font-size: clamp(22px, 2.1vw, 30px);
+      font-weight: 650;
+      letter-spacing: .2px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 62ch;
+    }
+
+    .toplinks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      margin-top:2px;
+    }
+
+    .chip{
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip:hover{ color: var(--text); }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 380px 1fr;
+      gap: 18px;
+      align-items:start;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      header{ flex-direction:column; }
+      .toplinks{ justify-content:flex-start; }
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .panel h2{
+      margin:0 0 8px 0;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .panel p{ margin:10px 0; color: var(--text); }
+    .panel .small{ color: var(--muted); font-size: 13px; }
+
+    .play{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+    }
+
+    .playbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 12px 12px;
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .playbar .labels{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .kbd{
+      font-family:var(--mono);
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      border-bottom-color:#1c1c1c;
+      padding:4px 8px;
+      border-radius: 10px;
+      background: rgba(0,0,0,.25);
+    }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    button{
+      font-family:var(--sans);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .06s ease;
+    }
+    button:hover{ background: rgba(255,255,255,.07); }
+    button:active{ transform: translateY(1px); }
+    button.secondary{ color: var(--muted); }
+    button.danger{ border-color: rgba(255,107,107,.35); }
+
+    .io{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 520px;
+    }
+
+    @media (max-width: 980px){
+      .io{ grid-template-columns: 1fr; min-height:auto; }
+    }
+
+    .codepane{
+      border-right:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      min-height: 520px;
+    }
+    @media (max-width: 980px){
+      .codepane{ border-right:none; border-bottom:1px solid var(--line); min-height: 360px; }
+    }
+
+    .codehead, .reshead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 12px 8px;
+      gap:12px;
+    }
+
+    .codehead .label, .reshead .label{
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    textarea{
+      flex:1;
+      width:100%;
+      border:none;
+      outline:none;
+      resize:none;
+      padding: 12px;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--mono);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .err{
+      min-height: 20px;
+      padding: 0 12px 12px;
+      color: var(--danger);
+      font-size: 13px;
+      font-family: var(--mono);
+      opacity: .95;
+    }
+
+    .resultpane{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .stagewrap{
+      padding: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.25);
+      flex:1;
+    }
+
+    .stage{
+      width: min(100%, 640px);
+      aspect-ratio: 1 / 1;
+      background: #fff;
+      border-radius: 14px;
+      overflow:hidden;
+      box-shadow: 0 10px 34px rgba(0,0,0,.35);
+      border: 1px solid rgba(0,0,0,.15);
+    }
+    canvas{ width:100%; height:100%; display:block; }
+
+    section{
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .grid2{ grid-template-columns:1fr; } }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .card h3{
+      margin:0 0 6px 0;
+      font-size: 15px;
+      font-weight: 650;
+    }
+    .card p{ margin: 8px 0; color: var(--muted); }
+
+    .ref{
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      background: rgba(0,0,0,.22);
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      overflow:auto;
+      white-space: pre;
+    }
+
+    .examples{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){ .examples{ grid-template-columns: 1fr; } }
+
+    .ex{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      background: rgba(255,255,255,.03);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .ex .code{
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--white);
+      background: rgba(0,0,0,.24);
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      overflow:auto;
+      white-space: nowrap;
+    }
+    .ex .meta{
+      display:flex;
+      gap:8px;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .ex .desc{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top:-2px;
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hr{
+      height:1px;
+      background: var(--line);
+      margin: 14px 0;
+    }
+
+    .notice{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .pill{
+      font-family:var(--mono);
+      font-size: 12px;
+      padding: 6px 8px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0,0,0,.25);
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="title">Pa++ern (2009) — Revival</div>
+        <div class="subtitle">
+          A tiny language for drawing patterns. Type code. Get a pattern.
+          In 2009, the output was stitched by an embroidery machine—today, it returns as a web-native revival.
+        </div>
+        <div class="pillrow" aria-label="Quick facts">
+          <span class="pill">Not Turing-complete</span>
+          <span class="pill">1000×1000 logical canvas</span>
+          <span class="pill">Instruction limit: 10,000</span>
+          <span class="pill">Loops: ( ) + . / ,</span>
+        </div>
+      </div>
+
+      <nav class="toplinks" aria-label="Archive links">
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#how">How it worked (2009)</a>
+        <a class="chip" href="#language">Language</a>
+        <a class="chip" href="#examples">Examples</a>
+        <a class="chip" href="#archive">Archive</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="panel">
+        <h2>About this revival</h2>
+        <p>
+          Pa++ern is a minimal, esoteric-style language designed to produce visual patterns.
+          It was originally conceived for short, tweet-length code strings and translated into textile output via machinery.
+          This page revives the language as an immediate, browser-based playground.
+        </p>
+        <p class="small">
+          If the code is invalid (broken parentheses or instruction limit exceeded), the canvas will clear and an error will be shown.
+        </p>
+        <div class="hr"></div>
+        <p class="small">
+          Tip: click an example below to load it, then tweak one character at a time.
+          The language is intentionally small. The range comes from composition.
+        </p>
+      </div>
+
+      <div class="play" id="playground">
+        <div class="playbar">
+          <div class="labels">
+            <span class="kbd">Allowed tokens: o x + | - ^ v &gt; &lt; ! i ? * ( ) . ,</span>
+            <span class="kbd">θ=0° is right</span>
+          </div>
+          <div class="actions">
+            <button id="btnRun" title="Run (also runs automatically)">Run</button>
+            <button id="btnRandom" class="secondary" title="Load a random example">Random Example</button>
+            <button id="btnShare" class="secondary" title="Copy a shareable link">Copy Link</button>
+            <button id="btnClear" class="danger" title="Clear editor">Clear</button>
+          </div>
+        </div>
+
+        <div class="io">
+          <div class="codepane">
+            <div class="codehead">
+              <div class="label">code</div>
+              <div class="notice">Auto-runs while typing</div>
+            </div>
+            <textarea id="code" spellcheck="false"></textarea>
+            <div class="err" id="err" aria-live="polite"></div>
+          </div>
+
+          <div class="resultpane">
+            <div class="reshead">
+              <div class="label">result</div>
+              <div class="notice">Logical canvas: 1000×1000</div>
+            </div>
+            <div class="stagewrap">
+              <div class="stage">
+                <canvas id="c"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="grid2">
+        <div class="card">
+          <h3>What is Pa++ern?</h3>
+          <p>
+            A compact pattern-drawing language: five drawing primitives, movement, scale, rotation, hue-shift,
+            and nested loops. It is deliberately not general-purpose—only for producing patterns.
+          </p>
+          <p>
+            The revival keeps the core constraint: you should be able to type small strings and still get surprising structure.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Why revive it now?</h3>
+          <p>
+            The original work used social code as input and a physical machine as output.
+            The revival keeps the same idea—code as material—while making the feedback loop instant and browser-native.
+          </p>
+          <p class="small">
+            If you want the historical context, use the archive links below. This page is intentionally focused on the experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="grid2">
+        <div class="card">
+          <h3>How it worked (2009)</h3>
+          <p>
+            The 2009 installation accepted short user-generated code strings (tweet-length),
+            interpreted valid programs, returned a preview, and converted the result into a machine-readable pattern.
+            The output was stitched: pattern on the front, code on the back.
+          </p>
+          <p class="small">
+            This revival replaces the physical output with a direct canvas renderer—but preserves the same input grammar.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Revival edition</h3>
+          <p>
+            This page renders on a fixed 1000×1000 logical canvas and scales responsively.
+            Movements respect direction and scale (turtle-style). Lines scale with size (strokeWidth ∝ s).
+          </p>
+          <div class="ref" role="note">State: pos(x,y), θ (deg), s, h
+Translate: ^ v > < use θ and s
+Loop: ( ... ) followed by . (×1) and , (×5)
+Limit: 10,000 executed commands</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="language">
+      <div class="grid2">
+        <div class="card">
+          <h3>Language (Quick Reference)</h3>
+          <div class="ref" aria-label="Quick reference">
+Drawing:    o x + | -
+Translate:  ^ v > <
+Scale:      ! (×2), i (÷2)
+Rotation:   ? (+15°)
+Color:      * (Hue +10%)
+Loop:       ( ... ) then '.' (×1) and ',' (×5)
+Nestable. Repeat markers only valid immediately after ')'.
+Errors: broken parentheses or instruction limit exceeded.
+          </div>
+          <p class="small">
+            Anything outside the allowed tokens is ignored.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Loop examples</h3>
+          <p class="small">Loops are defined as block expansion. Nested loops expand from inside out.</p>
+          <div class="ref" aria-label="Loop examples">
+(o<o>)...
+≡ o<o>o<o>o<o>
+
+((o<+)..-v)...
+≡ o<+o<+-vo<+o<+-vo<+o<+-v
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="card" style="margin-bottom:12px;">
+        <h3>Examples</h3>
+        <p class="small">Click an example to load it into the editor. Then modify one character at a time.</p>
+      </div>
+
+      <div class="examples" id="exampleGrid"></div>
+    </section>
+
+    <section id="archive">
+      <div class="grid2">
+        <div class="card">
+          <h3>Archive links</h3>
+          <p><a href="https://neural.it/2009/09/paern-esoteric-language-for-embroidery/" target="_blank" rel="noreferrer">Neural (2009) — overview article</a></p>
+          <p><a href="https://j-mediaarts-festival.bunka.go.jp/en/award/single/paern/index-2.html" target="_blank" rel="noreferrer">Japan Media Arts Festival — page</a></p>
+          <p><a href="https://www.youtube.com/watch?v=19orgugM3iQ" target="_blank" rel="noreferrer">YouTube — documentation video</a></p>
+          <p class="small">These are external pages; content and wording may differ from the revival’s focus.</p>
+        </div>
+
+        <div class="card">
+          <h3>Credits</h3>
+          <p>Daito Manabe + Motoi Ishibashi</p>
+          <p class="small">Originally presented in 2009. Revival edition: browser-based interpreter and renderer.</p>
+          <div class="hr"></div>
+          <p class="small">
+            If you host this page, keep it one file. The constraint is part of the work.
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        <div class="hr"></div>
+        <div>Pa++ern — Revival (single-page). Built for immediate play, not exhaustive explanation.</div>
+      </footer>
+    </section>
+  </div>
+
+<script>
+(() => {
+  // ========= Config =========
+  const LOGICAL_SIZE = 1000;
+  const STEP = 24;       // base translation step
+  const R0 = 18;         // base radius
+  const L0 = 28;         // base line length
+  const W0 = 2;          // base stroke width (scaled by s)
+  const HUE_STEP = 0.10; // +10%
+  const ROT_STEP = 15;   // degrees
+  const SCALE_MIN = 1/64, SCALE_MAX = 64;
+  const INSTR_LIMIT = 10_000;
+
+  const ALLOWED = new Set("ox+|-^v><!i?*().,");
+  const drawSet = new Set("ox+|-");
+  const moveSet = new Set("^v><");
+  const stateSet = new Set("!i?*");
+
+  // ========= DOM =========
+  const ta = document.getElementById("code");
+  const errEl = document.getElementById("err");
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d", { alpha: false });
+
+  const btnRun = document.getElementById("btnRun");
+  const btnRandom = document.getElementById("btnRandom");
+  const btnShare = document.getElementById("btnShare");
+  const btnClear = document.getElementById("btnClear");
+  const exampleGrid = document.getElementById("exampleGrid");
+
+  // ========= Examples =========
+  const EXAMPLES = [
+    {
+      code: "(o>*)...( ? > o * )..,",
+      desc: "Looped walk with rotation and hue shift. Good for small edits.",
+    },
+    {
+      code: "(+?)........................",
+      desc: "Rotation-only ring. Increase dots to complete a full turn.",
+    },
+    {
+      code: "(!o>*)........",
+      desc: "Scale up, draw, step forward, shift hue. Simple ‘caterpillar’.",
+    },
+    {
+      code: "((o<+)..-v)...",
+      desc: "Nested loop expansion demo (as specified).",
+    },
+    {
+      code: "(*o^?*o^?*o^?*o^?*o^?*o^?)",
+      desc: "Manual repetition: alternating hue + rotate while advancing.",
+    },
+    {
+      code: "(o^?)*,,,,",
+      desc: "Large repeat via commas (×5). Watch the 10k instruction limit.",
+    },
+  ];
+
+  function buildExamples() {
+    exampleGrid.innerHTML = "";
+    EXAMPLES.forEach((ex, idx) => {
+      const el = document.createElement("div");
+      el.className = "ex";
+      el.innerHTML = `
+        <div class="code" role="button" tabindex="0" aria-label="Load example">${escapeHtml(ex.code)}</div>
+        <div class="desc">${escapeHtml(ex.desc)}</div>
+        <div class="meta">
+          <button class="secondary" data-act="load" data-idx="${idx}">Load</button>
+          <button class="secondary" data-act="copy" data-idx="${idx}">Copy</button>
+        </div>
+      `;
+      exampleGrid.appendChild(el);
+
+      const codeBox = el.querySelector(".code");
+      codeBox.addEventListener("click", () => loadExample(idx));
+      codeBox.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); loadExample(idx); }
+      });
+    });
+
+    exampleGrid.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-act]");
+      if (!btn) return;
+      const idx = Number(btn.getAttribute("data-idx"));
+      const act = btn.getAttribute("data-act");
+      if (act === "load") loadExample(idx);
+      if (act === "copy") copyToClipboard(EXAMPLES[idx].code);
+    });
+  }
+
+  function loadExample(i) {
+    ta.value = EXAMPLES[i].code;
+    render();
+    ta.focus();
+    // Put cursor at end for quick edits
+    ta.selectionStart = ta.selectionEnd = ta.value.length;
+  }
+
+  // ========= URL sharing =========
+  function getCodeFromURL() {
+    const url = new URL(window.location.href);
+    const c = url.searchParams.get("code");
+    return c ? c : null;
+  }
+
+  function setCodeToURL(code) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("code", code);
+    window.history.replaceState({}, "", url.toString());
+  }
+
+  async function copyShareLink() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("code", ta.value);
+    await copyToClipboard(url.toString());
+  }
+
+  // ========= Core: sanitize + parse + exec =========
+  function setError(msg) { errEl.textContent = msg || ""; }
+
+  function resizeCanvas() {
+    canvas.width = LOGICAL_SIZE;
+    canvas.height = LOGICAL_SIZE;
+  }
+
+  function resetAndClear() {
+    ctx.save();
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,LOGICAL_SIZE,LOGICAL_SIZE);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0,0,LOGICAL_SIZE,LOGICAL_SIZE);
+    ctx.restore();
+  }
+
+  function sanitize(input) {
+    let out = "";
+    for (const ch of input) if (ALLOWED.has(ch)) out += ch;
+    return out;
+  }
+
+  // AST Node:
+  // { type:'cmd', ch }
+  // { type:'block', nodes: Node[], repeat: number }
+  function parseSequence(code, i, depth) {
+    const nodes = [];
+    while (i < code.length) {
+      const ch = code[i];
+
+      if (ch === "(") {
+        const inner = parseSequence(code, i + 1, depth + 1);
+        i = inner.nextIndex;
+
+        if (i >= code.length || code[i] !== ")") {
+          throw new Error("Syntax error: missing ')'");
+        }
+        i++; // consume ')'
+
+        // Repeat markers only valid immediately after ')'
+        let d = 0, c = 0;
+        while (i < code.length && (code[i] === "." || code[i] === ",")) {
+          if (code[i] === ".") d++;
+          else c++;
+          i++;
+        }
+        let n = 1;
+        if (d > 0 || c > 0) {
+          n = (d > 0 ? d : 1) * Math.pow(5, c);
+        }
+        nodes.push({ type: "block", nodes: inner.nodes, repeat: n });
+        continue;
+      }
+
+      if (ch === ")") {
+        if (depth === 0) throw new Error("Syntax error: unexpected ')'");
+        return { nodes, nextIndex: i };
+      }
+
+      if (ch === "." || ch === ",") {
+        // markers elsewhere are ignored (not an error); they have no meaning outside block postfix
+        i++;
+        continue;
+      }
+
+      nodes.push({ type: "cmd", ch });
+      i++;
+    }
+
+    if (depth > 0) throw new Error("Syntax error: missing ')'");
+    return { nodes, nextIndex: i };
+  }
+
+  function parse(codeRaw) {
+    const code = sanitize(codeRaw);
+    const { nodes } = parseSequence(code, 0, 0);
+    return nodes;
+  }
+
+  function degToRad(deg) { return deg * Math.PI / 180; }
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function hsla(h01, sPct=80, lPct=60, a=0.7) {
+    return `hsla(${(h01*360)%360}, ${sPct}%, ${lPct}%, ${a})`;
+  }
+
+  function exec(nodes) {
+    // State
+    let x = LOGICAL_SIZE/2, y = LOGICAL_SIZE/2;
+    let theta = 0; // degrees, 0 => right
+    let s = 1.0;
+    let h = 0.0;
+
+    let instrCount = 0;
+
+    function countAndCheck() {
+      instrCount++;
+      if (instrCount > INSTR_LIMIT) {
+        throw new Error(`Instruction limit exceeded (${INSTR_LIMIT})`);
+      }
+    }
+
+    function applyMove(ch) {
+      countAndCheck();
+      const rad = degToRad(theta);
+      const dxF = Math.cos(rad), dyF = Math.sin(rad);
+      const radR = degToRad(theta + 90);
+      const dxR = Math.cos(radR), dyR = Math.sin(radR);
+      const d = STEP * s;
+
+      switch (ch) {
+        case "^": x += dxF * d; y += dyF * d; break;
+        case "v": x -= dxF * d; y -= dyF * d; break;
+        case ">": x += dxR * d; y += dyR * d; break;
+        case "<": x -= dxR * d; y -= dyR * d; break;
+      }
+    }
+
+    function applyState(ch) {
+      countAndCheck();
+      switch (ch) {
+        case "!": s = clamp(s * 2, SCALE_MIN, SCALE_MAX); break;
+        case "i": s = clamp(s / 2, SCALE_MIN, SCALE_MAX); break;
+        case "?": theta = (theta + ROT_STEP) % 360; break;
+        case "*": h = (h + HUE_STEP) % 1.0; break;
+      }
+    }
+
+    function draw(ch) {
+      countAndCheck();
+      const R = R0 * s;
+      const L = L0 * s;
+      const w = Math.max(1, W0 * s);
+
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(degToRad(theta));
+      ctx.lineWidth = w;
+      ctx.strokeStyle = hsla(h, 80, 60, 0.7);
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+
+      ctx.beginPath();
+      if (ch === "o") {
+        ctx.arc(0, 0, R, 0, Math.PI * 2);
+      } else if (ch === "x") {
+        ctx.moveTo(-L/2, -L/2); ctx.lineTo(L/2, L/2);
+        ctx.moveTo(-L/2,  L/2); ctx.lineTo(L/2,-L/2);
+      } else if (ch === "+") {
+        ctx.moveTo(-L/2, 0); ctx.lineTo(L/2, 0);
+        ctx.moveTo(0, -L/2); ctx.lineTo(0, L/2);
+      } else if (ch === "|") {
+        ctx.moveTo(0, -L/2); ctx.lineTo(0, L/2);
+      } else if (ch === "-") {
+        ctx.moveTo(-L/2, 0); ctx.lineTo(L/2, 0);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function runNode(node) {
+      if (node.type === "cmd") {
+        const ch = node.ch;
+        if (moveSet.has(ch)) return applyMove(ch);
+        if (stateSet.has(ch)) return applyState(ch);
+        if (drawSet.has(ch)) return draw(ch);
+        return;
+      }
+      // block
+      for (let k = 0; k < node.repeat; k++) {
+        for (const inner of node.nodes) runNode(inner);
+      }
+    }
+
+    for (const n of nodes) runNode(n);
+  }
+
+  // ========= Render cycle =========
+  let t = null;
+  function schedule() {
+    if (t) clearTimeout(t);
+    t = setTimeout(render, 90);
+  }
+
+  function render() {
+    setError("");
+    resizeCanvas();
+    resetAndClear();
+
+    try {
+      const ast = parse(ta.value);
+      exec(ast);
+      // Keep URL in sync (non-intrusive)
+      setCodeToURL(ta.value);
+    } catch (e) {
+      resetAndClear();
+      setError(String(e.message || e));
+    }
+  }
+
+  // ========= Utilities =========
+  function escapeHtml(s) {
+    return (s+"")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  async function copyToClipboard(text) {
+    try{
+      await navigator.clipboard.writeText(text);
+      setError("Copied.");
+      setTimeout(() => { if (errEl.textContent === "Copied.") setError(""); }, 900);
+    } catch {
+      // fallback
+      const tmp = document.createElement("textarea");
+      tmp.value = text;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand("copy");
+      document.body.removeChild(tmp);
+      setError("Copied.");
+      setTimeout(() => { if (errEl.textContent === "Copied.") setError(""); }, 900);
+    }
+  }
+
+  // ========= Buttons =========
+  btnRun.addEventListener("click", render);
+  btnRandom.addEventListener("click", () => {
+    const i = Math.floor(Math.random() * EXAMPLES.length);
+    loadExample(i);
+  });
+  btnShare.addEventListener("click", copyShareLink);
+  btnClear.addEventListener("click", () => {
+    ta.value = "";
+    render();
+    ta.focus();
+  });
+
+  // ========= Init =========
+  buildExamples();
+
+  const fromURL = getCodeFromURL();
+  if (fromURL !== null) {
+    ta.value = fromURL;
+  } else {
+    ta.value = EXAMPLES[0].code;
+  }
+
+  ta.addEventListener("input", schedule);
+  window.addEventListener("resize", render);
+  render();
+})();
+</script>
+</body>
+</html>

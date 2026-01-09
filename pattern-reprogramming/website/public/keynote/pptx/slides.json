@@ -1,0 +1,703 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "texts": [
+        {
+          "text": "Pa++ern(2009)\nDaito Manabe + Motoi Ishibashi",
+          "layout": {
+            "x": 1270000,
+            "y": 1854200,
+            "w": 10464800,
+            "h": 2324100
+          }
+        },
+        {
+          "text": "esoteric language for embroidery",
+          "layout": {
+            "x": 1270000,
+            "y": 7607300,
+            "w": 10464800,
+            "h": 1270000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 2,
+      "texts": [
+        {
+          "text": "hack the industrial sawing machine\ndesign the original programming language\nusing twitter ",
+          "layout": {
+            "x": 495300,
+            "y": 4330700,
+            "w": 12001500,
+            "h": 5715000
+          }
+        },
+        {
+          "text": "Pa++ern",
+          "layout": {
+            "x": 1270000,
+            "y": 1485900,
+            "w": 10464800,
+            "h": 2324100
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 3,
+      "texts": [
+        {
+          "text": "hardware",
+          "layout": {}
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 4,
+      "texts": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_4_image3.png",
+          "layout": {
+            "x": 2438400,
+            "y": 1828800,
+            "w": 8128000,
+            "h": 6096000
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "texts": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_5_image4.png",
+          "layout": {
+            "x": 0,
+            "y": 785924,
+            "w": 13004800,
+            "h": 8181752
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "texts": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_6_image5.png",
+          "layout": {
+            "x": 2438400,
+            "y": 1828800,
+            "w": 8128000,
+            "h": 6096000
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "texts": [
+        {
+          "text": "software",
+          "layout": {}
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 8,
+      "texts": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_8_image6.png",
+          "layout": {
+            "x": 0,
+            "y": 1040453,
+            "w": 13004800,
+            "h": 7672694
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "texts": [
+        {
+          "text": "esoteric language",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "An esoteric programming language (sometimes shortened to esolang) is a programming language designed as a test of the boundaries of computer programming language design, as a proof of concept, or as a joke. #wikipedia",
+          "layout": {
+            "x": 1270000,
+            "y": 3848100,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 10,
+      "texts": [
+        {
+          "text": "programing language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "BASICPRINT \u201cHello, world!\u201d",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 11,
+      "texts": [
+        {
+          "text": "programing language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "C++# include <iostream>int main(){std::cout << \u201cHello, world!\u201d << std :: endl;return 0;}",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 12,
+      "texts": [
+        {
+          "text": "esoteric language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "Brainf*ck++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 13,
+      "texts": [
+        {
+          "text": "esoteric language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "whitespace (you can\u2019t see because it\u2019s [Space], [LF] and [Tab] )  ",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 14,
+      "texts": [
+        {
+          "text": "esoteric language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "piet ",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_14_image1.gif",
+          "layout": {
+            "x": 5588000,
+            "y": 4711700,
+            "w": 1816100,
+            "h": 1816100
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "texts": [
+        {
+          "text": "esoteric language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "SNUSP   /e+++++++++++++++++++++++++++++.\\  ./\\/\\/\\  /+++\\!>.+++o.l.+++++++l/                  #/?\\  $H!\\++++++\\ +   \\comma.------------ .<w++++++++.\\ /?\\<!\\-//++++++/ +/\\                      /.--------o/ \\-/!.++++++++++/?\\n/=\\++++++\\ +\\\\!=++++++\\             \\r+++.l------.d--------.>+.!\\-/\\!\\/\\/\\/\\/ \\++++++++++/",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 16,
+      "texts": [
+        {
+          "text": "esoteric language\n \u201cHello, world!\u201d examples",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "Malbolge(=<`#9]~6ZY32Vw/.R,+Op(L,+k#Gh&}Cdz@aw=;zyKw%ut4Uqp0/mlejihtfrHcbaC2^W\\>Z,XW)UTSL53\\HGFjW",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 17,
+      "texts": [
+        {
+          "text": "Pa++ern language design",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "Low floor\nHigh ceiling\nWide wall(by Mitchel Resnick)",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 18,
+      "texts": [
+        {
+          "text": "Pa++ern language design",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "It doesn\u2019t need to be Turing-completebecause it is only for designing patterns.",
+          "layout": {
+            "x": 1270000,
+            "y": 3378200,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 19,
+      "texts": [
+        {
+          "text": "Pa++ern language design",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "but it must be nice looking",
+          "layout": {
+            "x": 1270000,
+            "y": 2768600,
+            "w": 10464800,
+            "h": 5715000
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 20,
+      "texts": [
+        {
+          "text": "it is inspired by Japanese face mark\uff08^-^)",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "<( \uffe3 \u2267\uffe3)>       (\uff9f\u0414\uff9f)\uff89     \u30fd(\uff9f\u0414\uff9f\u30fd)\n<( \uffe3 \u2267\uffe3)>     (\u00b4- \uff40)         \u03b5\u03b5=\uff8d(*\u00b4\u30fc`)\u30ce\n\u250f|\uffe3\uff3e\uffe3* |\u251b      (\u00b4*o*\uff40)\uff89     ^\u25ce-\u25ce\n( \u00b4\uff65_\u309d\uff65) \u00b4  -_\u309d-)\u00b4     \uff65_\u309d\uff65)\u00b4   -_\u309d-)\n\u30d0\u2501\u2501\u30fd(\u3002\u00b4\u25a1\uff40)\u30ce\u2501\u2501\u30a4\n( \uff9f \uff10\u309d\uff9f)     ( \uff9f \u2200\u309d\uff9f)  (\uff65_\uff65)\n(o^-^)o \n((w(\u00b4\u25bd\uff40)w))       (\u3003\uff65\u03c9\uff65)",
+          "layout": {
+            "x": 1270000,
+            "y": 2692400,
+            "w": 10464800,
+            "h": 6845300
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 21,
+      "texts": [
+        {
+          "text": "Pa++ern language",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "primitive drawing pattern: o x + | -\ntranslate:  ^v><\nscale: ! i\nrotation ?\ncolor: *\nloop 1 time : ()  and . \nloop 5 times: ()  and , ",
+          "layout": {
+            "x": 1270000,
+            "y": 2476500,
+            "w": 10464800,
+            "h": 6942386
+          }
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": 22,
+      "texts": [
+        {
+          "text": "!!<^o^>!!\no(?*v*?i),,",
+          "layout": {
+            "x": 5972385,
+            "y": 419100,
+            "w": 3198020,
+            "h": 2921000
+          }
+        },
+        {
+          "text": "code",
+          "layout": {
+            "x": 641070,
+            "y": 1212850,
+            "w": 1156260,
+            "h": 647701
+          }
+        },
+        {
+          "text": "result",
+          "layout": {
+            "x": 607237,
+            "y": 4972050,
+            "w": 1223926,
+            "h": 647701
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_22_image7.png",
+          "layout": {
+            "x": 4038600,
+            "y": 2527300,
+            "w": 7048500,
+            "h": 7048500
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "texts": [
+        {
+          "text": "*?^(<i)....!<<<+(v),(>^>^)^^<^ (>)...+(v), >> +(^),< vvv+ >>vv>+(^), >>+>> <+(v), (>^),(v<)..v+vi(>>v???),..  (<<?),,!!!!+(<<v??*),,",
+          "layout": {
+            "x": 3672892,
+            "y": 660399,
+            "w": 8305404,
+            "h": 812801
+          }
+        },
+        {
+          "text": "code",
+          "layout": {
+            "x": 641070,
+            "y": 742950,
+            "w": 1156260,
+            "h": 647701
+          }
+        },
+        {
+          "text": "result",
+          "layout": {
+            "x": 607237,
+            "y": 5213350,
+            "w": 1223926,
+            "h": 647701
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_23_image8.png",
+          "layout": {
+            "x": 4421993,
+            "y": 2336800,
+            "w": 6807201,
+            "h": 6807200
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "texts": [
+        {
+          "text": "Pa++ern x twitter",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_24_image9.png",
+          "layout": {
+            "x": 152400,
+            "y": 3098800,
+            "w": 12687300,
+            "h": 4229100
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "texts": [
+        {
+          "text": "Pa++ern x twitter",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_25_image10.png",
+          "layout": {
+            "x": 239514,
+            "y": 2522721,
+            "w": 12525772,
+            "h": 6435358
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "texts": [
+        {
+          "text": "Pa++ern x twitter",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_26_image11.png",
+          "layout": {
+            "x": 2412229,
+            "y": 2222574,
+            "w": 8180342,
+            "h": 7035652
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "texts": [
+        {
+          "text": "Pa++ern x twitter",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_27_image12.png",
+          "layout": {
+            "x": 1676400,
+            "y": 2235200,
+            "w": 9639300,
+            "h": 6786371
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "texts": [
+        {
+          "text": "Pa++ern installation",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/keynote/pptx/media/slide_28_image13.png",
+          "layout": {
+            "x": 1333500,
+            "y": 2184400,
+            "w": 10325100,
+            "h": 6883400
+          }
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "texts": [
+        {
+          "text": "Pa++ern ",
+          "layout": {
+            "x": 1270000,
+            "y": 254000,
+            "w": 10464800,
+            "h": 2438400
+          }
+        },
+        {
+          "text": "google \u201c pa++ern \u201c !\nand try it!",
+          "layout": {
+            "x": 1270000,
+            "y": 5092700,
+            "w": 10464800,
+            "h": 2438400
+          }
+        }
+      ],
+      "media": []
+    }
+  ],
+  "width": 13004800,
+  "height": 9753600
+}

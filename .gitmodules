@@ -1,0 +1,6 @@
+[submodule "beat-link-cpp/implementation/beatlink~/source/beat-link-cpp"]
+	path = beat-link-cpp/implementation/beatlink~/source/beat-link-cpp
+	url = https://github.com/daitomanabe/beat-link-cpp.git
+[submodule "beat-link-cpp/implementation/beatlink~/source/min-devkit"]
+	path = beat-link-cpp/implementation/beatlink~/source/min-devkit
+	url = https://github.com/Cycling74/min-devkit.git
